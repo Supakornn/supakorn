@@ -12,7 +12,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth();
-const academicYear = currentMonth >= 5 ? currentYear - 2024 + 1 : currentYear - 2024;
+const academicYear =
+  currentMonth >= 5 ? currentYear - 2024 + 1 : currentYear - 2024;
 const yearSuffix = (year) => {
   switch (year) {
     case 1:
@@ -39,7 +40,7 @@ const lastedProjects = projects.slice(0, 1);
       Hi, I'm A Developer ✨ passionate about building innovative solutions and cybersecurity 🔐
     </p> -->
 
-  <div class="max-w-4xl mt-20 mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl lg:mt-20 mx-auto px-4 sm:px-6 lg:px-8">
     <h1 class="text-4xl font-bold mb-6 text-slate-900 dark:text-white">
       👋 Welcome to My Portfolio !
     </h1>
@@ -49,14 +50,21 @@ const lastedProjects = projects.slice(0, 1);
       <div
         class="p-6 px-10 bg-white dark:bg-dark-card rounded-lg shadow-sm border border-slate-200 dark:border-dark"
       >
-        <h2 class="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">Who Am I ?</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">
+          Who Am I ?
+        </h2>
         <p class="text-lg text-slate-700 dark:text-slate-300 mb-4">
-          Hi, I'm <span class="text-primary">Supakorn Ieamgomol</span>, a {studentYear} year student
-          in the Faculty of <span class="text-primary">Information Technology </span>
-          at King Mongkut's University of Technology Thonburi <span class="text-primary"
-            >(KMUTT)</span
-          > I'm a <span class="text-primary">Developer</span> with a strong passion for building innovative
-          solutions and a deep interest in <span class="text-primary">cybersecurity</span>.
+          Hi, I'm <span class="text-primary">Supakorn Ieamgomol</span>, a {
+            studentYear
+          } year student in the Faculty of <span class="text-primary"
+            >Information Technology
+          </span>
+          at King Mongkut's University of Technology Thonburi <span
+            class="text-primary">(KMUTT)</span
+          > I'm a <span class="text-primary">Developer</span> with a strong passion
+          for building innovative solutions and a deep interest in <span
+            class="text-primary">cybersecurity</span
+          >.
         </p>
         <div class="mt-4">
           <!-- <a
@@ -78,7 +86,8 @@ const lastedProjects = projects.slice(0, 1);
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+              ></path>
             </svg>
             Download CV
           </a>
@@ -89,7 +98,9 @@ const lastedProjects = projects.slice(0, 1);
       <div
         class="p-6 px-10 bg-white dark:bg-dark-card rounded-lg shadow-sm border border-slate-200 dark:border-dark"
       >
-        <h2 class="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">🍺 Find Me On</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">
+          🍺 Find Me On
+        </h2>
         <div class="mt-4 flex flex-wrap gap-4">
           <a
             href="https://github.com/supakornn"
@@ -157,7 +168,9 @@ const lastedProjects = projects.slice(0, 1);
         <div
           class="w-full p-6 pl-10 bg-white dark:bg-dark-card rounded-lg shadow-sm border border-slate-200 dark:border-dark transition-colors duration-200"
         >
-          <h2 class="text-xl font-semibold mb-4 dark:text-white">🚀 Latest Projects</h2>
+          <h2 class="text-xl font-semibold mb-4 dark:text-white">
+            🚀 Latest Projects
+          </h2>
           <p class="text-slate-600 dark:text-slate-400">
             Check out some of my recent work and personal projects.
           </p>
@@ -223,7 +236,7 @@ const lastedProjects = projects.slice(0, 1);
           duration: 0.4,
           stagger: 0.1,
           ease: "power2.out",
-          delay: 0.1
+          delay: 0.1,
         });
       </script>
     </div>
