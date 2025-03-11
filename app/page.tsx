@@ -44,11 +44,11 @@ export default function Home() {
                 <h2 className="text-2xl font-semibold">Latest Writing</h2>
                 <div className="space-y-4">
                     {posts.length > 0 ? (
-                        posts.slice(0, 3).map((post) => (
+                        posts.slice(0, 5).map((post) => (
                             <article key={post.title} className="group">
                                 <Link
                                     href={`${post.link}`}
-                                    className="block space-y-2 p-4 -mx-4 rounded-lg hover:bg-secondary transition-colors"
+                                    className="block space-y-2 p-4 -mx-4 rounded-lg hover:bg-secondary hover:text-yellow-500 transition-colors"
                                 >
                                     <div className="flex items-center justify-between">
                                         <h3 className="font-medium">{post.title}</h3>

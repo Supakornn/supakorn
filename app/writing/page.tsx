@@ -33,7 +33,7 @@ export default function Writing() {
                         <Link
                             href={post.link}
                             target="_blank"
-                            className="block space-y-4 p-6 -mx-6 rounded-lg hover:bg-secondary transition-colors"
+                            className="block space-y-4 p-6 -mx-6 rounded-lg hover:bg-secondary hover:text-yellow-500 transition-colors"
                         >
                             <div className="flex items-start justify-between">
                                 <div>
@@ -43,8 +43,7 @@ export default function Writing() {
                                     <time className="text-sm text-muted-foreground">
                                         {new Date(post.date).toLocaleDateString("en-US", {
                                             year: "numeric",
-                                            month: "long",
-                                            day: "numeric"
+                                            month: "long"
                                         })}
                                     </time>
                                 </div>
