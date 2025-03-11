@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
+import { University } from "lucide-react";
 
 export default function About() {
     useEffect(() => {
@@ -25,13 +26,27 @@ export default function About() {
                         <span className="underline decoration-yellow-500">software developer</span>{" "}
                         based in Bangkok, Thailand. I interest in software developments and hacking.
                     </p>
-                    <p className="text-lg text-muted-foreground fade-in">
-                        Currently, I&apos;m a 1st year student in{" "}
-                        <span className="underline decoration-yellow-500">
-                            Information Technology
-                        </span>{" "}
-                        at the King Mongkut&apos;s University of Technology Thonburi.
-                    </p>
+                </div>
+            </section>
+
+            <section className="space-y-4 fade-in">
+                <h2 className="text-2xl font-semibold">Education</h2>
+                <div className="space-y-6">
+                    {[
+                        {
+                            faculty: "Information Technology",
+                            university: "King Mongkut's University of Technology Thonburi",
+                            period: "2024 - Present"
+                        }
+                    ].map((edu) => (
+                        <div key={`${edu.faculty}@${edu.university}`} className="space-y-2">
+                            <div className="flex items-center justify-between">
+                                <h3 className="font-medium">{edu.faculty}</h3>
+                                <span className="text-sm text-muted-foreground">{edu.period}</span>
+                            </div>
+                            <p className="text-muted-foreground">{edu.university}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
