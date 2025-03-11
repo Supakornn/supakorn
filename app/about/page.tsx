@@ -36,7 +36,8 @@ export default function About() {
                         {
                             faculty: "Information Technology",
                             university: "King Mongkut's University of Technology Thonburi",
-                            period: "2024 - Present"
+                            period: "2024 - Present",
+                            description: "Bachelor"
                         }
                     ].map((edu) => (
                         <div key={`${edu.faculty}@${edu.university}`} className="space-y-2">
@@ -44,6 +45,7 @@ export default function About() {
                                 <h3 className="font-medium">{edu.faculty}</h3>
                                 <span className="text-sm text-muted-foreground">{edu.period}</span>
                             </div>
+                            <p className="text-muted-foreground">{edu.description}</p>
                             <p className="text-muted-foreground">{edu.university}</p>
                         </div>
                     ))}
