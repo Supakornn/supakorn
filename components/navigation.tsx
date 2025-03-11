@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 
 export function Navigation() {
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         gsap.from(".nav-item", {
@@ -31,7 +32,30 @@ export function Navigation() {
                 >
                     Supakornn
                 </Link>
-                <div className="flex gap-8">
+
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="md:hidden"
+                    aria-label="Toggle menu"
+                >
+                    <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        {isOpen ? (
+                            <path d="M6 18L18 6M6 6l12 12" />
+                        ) : (
+                            <path d="M4 6h16M4 12h16M4 18h16" />
+                        )}
+                    </svg>
+                </button>
+
+                <div className="hidden md:flex gap-8">
                     {[
                         ["About", "/about"],
                         ["Projects", "/projects"],
@@ -51,6 +75,32 @@ export function Navigation() {
                         </Link>
                     ))}
                 </div>
+
+                {isOpen && (
+                    <div className="absolute top-full left-0 right-0 bg-background border-b border-border/40 md:hidden">
+                        <div className="px-6 py-4 space-y-4">
+                            {[
+                                ["About", "/about"],
+                                ["Projects", "/projects"],
+                                ["Certificates", "/certificates"],
+                                ["Writing", "/writing"]
+                            ].map(([title, url]) => (
+                                <Link
+                                    key={url}
+                                    href={url}
+                                    className={`block text-sm font-medium transition-colors ${
+                                        pathname === url
+                                            ? "text-primary-foreground"
+                                            : "text-muted-foreground hover:text-primary-foreground"
+                                    }`}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {title}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );
