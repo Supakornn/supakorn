@@ -102,6 +102,15 @@ export default function About() {
                     >
                         <div>Linkedin</div>
                     </a>
+                    <a
+                        href="
+                        https://twitter.com/supak0rnn
+                        "
+                        target="_blank"
+                        className="flex items-center space-x-2 text-primary-foreground hover:text-primary transition-colors"
+                    >
+                        <div>X</div>
+                    </a>
                 </div>
             </section>
         </div>
