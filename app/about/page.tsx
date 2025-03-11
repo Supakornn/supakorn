@@ -23,11 +23,14 @@ export default function About() {
                     <p className="text-xl text-muted-foreground fade-in">
                         I&apos;m a{" "}
                         <span className="underline decoration-yellow-500">software developer</span>{" "}
-                        based in Bangkok, Thailand. I specialize in building software and hacking.
+                        based in Bangkok, Thailand. I interest in software developments and hacking.
                     </p>
                     <p className="text-lg text-muted-foreground fade-in">
-                        Currently, I&apos;m a 1st year student in Information Technology at the King
-                        Mongkut&apos;s University of Technology Thonburi.
+                        Currently, I&apos;m a 1st year student in{" "}
+                        <span className="underline decoration-yellow-500">
+                            Information Technology
+                        </span>{" "}
+                        at the King Mongkut&apos;s University of Technology Thonburi.
                     </p>
                 </div>
             </section>

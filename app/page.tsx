@@ -28,7 +28,7 @@ export default function Home() {
                 <p className="text-xl text-muted-foreground fade-in">
                     I&apos;m a{" "}
                     <span className="underline decoration-yellow-500">software developer</span>{" "}
-                    based in Bangkok, Thailand. I specialize in building software and hacking.
+                    based in Bangkok, Thailand. I interest in software developments and hacking.
                 </p>
                 <div className="fade-in">
                     <Link
