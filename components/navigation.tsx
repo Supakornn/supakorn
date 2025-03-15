@@ -59,8 +59,8 @@ export function Navigation() {
                     {[
                         ["About", "/about"],
                         ["Projects", "/projects"],
-                        ["Certificates", "/certificates"],
-                        ["Writing", "/writing"]
+                        ["Certificates", "/certificates"]
+                        // ["Writing", "/writing"]
                     ].map(([title, url]) => (
                         <Link
                             key={url}

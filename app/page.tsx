@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { posts } from "./writing/data";
+import { projects } from "./projects/data";
 
 export default function Home() {
     useEffect(() => {
@@ -26,21 +26,53 @@ export default function Home() {
                     <span className="text-yellow-500">]</span>
                 </h1>
                 <p className="text-xl text-muted-foreground fade-in">
-                    I&apos;m a{" "}
-                    <span className="underline decoration-yellow-500">software developer</span>{" "}
+                    I&apos;m a <span className="underline decoration-yellow-500">developer</span>{" "}
                     based in Bangkok, Thailand. I interest in software developments and hacking.
                 </p>
+                <section className="space-y-4 fade-in">
+                    <h2 className="text-2xl font-semibold">My Works</h2>
+                    <div className="space-y-4">
+                        {projects.slice(0, 3).map((proj) => (
+                            <article key={proj.title} className="group">
+                                <Link
+                                    href={`${proj.link}`}
+                                    className="block space-y-2 p-4 -mx-4 rounded-lg hover:bg-secondary hover:text-yellow-500 transition-colors"
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div className="space-y-1">
+                                            <h3 className="font-medium">{proj.title}</h3>
+                                            <p className="text-sm text-muted-foreground">
+                                                {proj.description}
+                                            </p>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            {proj.tags.slice(0, 2).map((tag) => (
+                                                <span
+                                                    key={tag}
+                                                    className="text-xs  bg-muted text-muted-foreground  rounded px-2 py-1"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </Link>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+
                 <div className="fade-in">
                     <Link
                         href="/projects"
                         className="inline-flex items-center text-primary-foreground hover:text-primary transition-colors"
                     >
-                        View my work <ArrowRight className="ml-2 h-4 w-4" />
+                        View all my works <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </div>
             </section>
 
-            <section className="space-y-4 fade-in">
+            {/* <section className="space-y-4 fade-in">
                 <h2 className="text-2xl font-semibold">Latest Writing</h2>
                 <div className="space-y-4">
                     {posts.length > 0 ? (
@@ -63,7 +95,7 @@ export default function Home() {
                         <p>No posts available.</p>
                     )}
                 </div>
-            </section>
+            </section> */}
         </div>
     );
 }
