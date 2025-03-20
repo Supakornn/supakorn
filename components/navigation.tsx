@@ -2,37 +2,57 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
+import { useState } from "react";
+import { NAVIGATION_ITEMS, SITE_CONFIG } from "@/lib/constants";
+
+const NavLink = ({
+    href,
+    children,
+    isMobile = false
+}: {
+    href: string;
+    children: React.ReactNode;
+    isMobile?: boolean;
+}) => {
+    const pathname = usePathname();
+    const isActive = pathname === href;
+
+    return (
+        <Link
+            href={href}
+            className={`
+                ${isMobile ? "block" : "relative"} 
+                text-sm font-medium transition-colors
+                ${
+                    isActive
+                        ? "text-primary-foreground after:w-full"
+                        : "text-muted-foreground hover:text-primary-foreground after:w-0 hover:after:w-full"
+                }
+                ${
+                    !isMobile &&
+                    'after:content-[""] after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:bg-primary-foreground after:transition-all after:duration-300'
+                }
+            `}
+        >
+            {children}
+        </Link>
+    );
+};
 
 export function Navigation() {
-    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        gsap.from(".nav-item", {
-            opacity: 0,
-            y: -20,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
-    }, []);
 
     return (
         <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/40">
             <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
                 <Link
                     href="/"
-                    className={`text-base font-medium transition-colors hover:text-yellow-500 ${
-                        pathname === "/"
-                            ? "text-primary-foreground"
-                            : "text-muted-foreground hover:text-primary-foreground"
-                    }`}
+                    className="text-base font-medium transition-colors hover:text-yellow-500"
                 >
-                    Supakornn
+                    {SITE_CONFIG.name}
                 </Link>
 
+                {/* Mobile menu button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="md:hidden"
@@ -55,48 +75,23 @@ export function Navigation() {
                     </svg>
                 </button>
 
+                {/* Desktop menu */}
                 <div className="hidden md:flex gap-8">
-                    {[
-                        ["About", "/about"],
-                        ["Projects", "/projects"],
-                        ["Certificates", "/certificates"]
-                        // ["Writing", "/writing"]
-                    ].map(([title, url]) => (
-                        <Link
-                            key={url}
-                            href={url}
-                            className={`relative text-sm font-medium transition-colors ${
-                                pathname === url
-                                    ? "text-primary-foreground after:w-full"
-                                    : "text-muted-foreground hover:text-primary-foreground after:w-0 hover:after:w-full"
-                            } after:content-[""] after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:bg-primary-foreground after:transition-all after:duration-300`}
-                        >
-                            {title}
-                        </Link>
+                    {NAVIGATION_ITEMS.map((item) => (
+                        <NavLink key={item.href} href={item.href}>
+                            {item.title}
+                        </NavLink>
                     ))}
                 </div>
 
+                {/* Mobile menu */}
                 {isOpen && (
                     <div className="absolute top-full left-0 right-0 bg-background border-b border-border/40 md:hidden">
                         <div className="px-6 py-4 space-y-4">
-                            {[
-                                ["About", "/about"],
-                                ["Projects", "/projects"],
-                                ["Certificates", "/certificates"],
-                                ["Writing", "/writing"]
-                            ].map(([title, url]) => (
-                                <Link
-                                    key={url}
-                                    href={url}
-                                    className={`block text-sm font-medium transition-colors ${
-                                        pathname === url
-                                            ? "text-primary-foreground"
-                                            : "text-muted-foreground hover:text-primary-foreground"
-                                    }`}
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {title}
-                                </Link>
+                            {NAVIGATION_ITEMS.map((item) => (
+                                <NavLink key={item.href} href={item.href} isMobile>
+                                    {item.title}
+                                </NavLink>
                             ))}
                         </div>
                     </div>

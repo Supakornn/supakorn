@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { University } from "lucide-react";
-
+import { workExperience, education } from "./data";
 export default function About() {
     useEffect(() => {
         const elements = gsap.utils.toArray(".fade-in");
@@ -32,20 +32,12 @@ export default function About() {
             <section className="space-y-4 fade-in">
                 <h2 className="text-2xl font-semibold">Education</h2>
                 <div className="space-y-6">
-                    {[
-                        {
-                            faculty: "Information Technology",
-                            university: "King Mongkut's University of Technology Thonburi",
-                            period: "2024 - Present",
-                            description: "Bachelor"
-                        }
-                    ].map((edu) => (
-                        <div key={`${edu.faculty}@${edu.university}`} className="space-y-2">
+                    {education.map((edu) => (
+                        <div key={`${edu.degree}@${edu.university}`} className="space-y-2">
                             <div className="flex items-center justify-between">
-                                <h3 className="font-medium">{edu.faculty}</h3>
+                                <h3 className="font-medium">{edu.degree}</h3>
                                 <span className="text-sm text-muted-foreground">{edu.period}</span>
                             </div>
-                            <p className="text-muted-foreground">{edu.description}</p>
                             <p className="text-muted-foreground">{edu.university}</p>
                         </div>
                     ))}
@@ -55,21 +47,14 @@ export default function About() {
             <section className="space-y-4 fade-in">
                 <h2 className="text-2xl font-semibold">Experience</h2>
                 <div className="space-y-6">
-                    {[
-                        {
-                            role: "Freelance Developer",
-                            company: "Freelance",
-                            period: "2024 - Present",
-                            description: "Development of web applications and softwares."
-                        }
-                    ].map((job) => (
+                    {workExperience.map((job) => (
                         <div key={job.role} className="space-y-2">
                             <div className="flex items-center justify-between">
                                 <h3 className="font-medium">{job.role}</h3>
                                 <span className="text-sm text-muted-foreground">{job.period}</span>
                             </div>
                             <p className="text-muted-foreground">{job.company}</p>
-                            <p className="text-muted-foreground">{job.description}</p>
+                            <p className="text-muted-foreground max-w-prose">{job.description}</p>
                         </div>
                     ))}
                 </div>

@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { SITE_CONFIG } from "@/lib/constants";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Supakornn",
-    description: "My portfolio website"
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
