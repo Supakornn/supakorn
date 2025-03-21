@@ -64,6 +64,12 @@ export default function About() {
                 <h2 className="text-2xl font-semibold">Connect</h2>
                 <div className="flex space-x-4">
                     <a
+                        href="https://resume.supakorn.info"
+                        className="flex items-center space-x-2 text-primary-foreground hover:text-primary transition-colors"
+                    >
+                        <div>Resume</div>
+                    </a>
+                    <a
                         href="mailto:contact@supakorn.info"
                         className="flex items-center space-x-2 text-primary-foreground hover:text-primary transition-colors"
                     >

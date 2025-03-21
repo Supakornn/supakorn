@@ -12,12 +12,12 @@ export interface Education {
 }
 
 export const workExperience: WorkExperience[] = [
-    {
-        role: "Developer",
-        company: "SnimTech",
-        period: "2024 - Present",
-        description: "Group of freelance developers. We develop web applications and softwares for clients in Thailand and abroad."
-    },
+    // {
+    //     role: "Developer",
+    //     company: "SnimTech",
+    //     period: "2024 - Present",
+    //     description: "Group of freelance developers. We develop web applications and softwares for clients in Thailand and abroad."
+    // },
     {
         role: "Freelance Developer",
         company: "Freelance",
