@@ -14,6 +14,13 @@ export const projects: Project[] = [
     link: "https://github.com/SIT-SandBox/thai-bad-words",
   },
   {
+    title: "Goscanner",
+    description:
+      "A powerful port scanner written in Go.",
+    tags: ["Go","Tools", "CLI"],
+    link: "https://github.com/Supakornn/goscanner",
+  },
+  {
     title: "Coding Type",
     description:
       "A Website for testing your typing speed in each programming languages syntax.",
@@ -61,7 +68,7 @@ export const projects: Project[] = [
   {
     title: "Reverse Shell Generator",
     description: "Generate a reverse shell with terminal CLI.",
-    tags: ["Go", "CLI"],
+    tags: ["Go", "Tools", "CLI"],
     link: "https://github.com/Supakornn/reverse-shell-gen",
   },
 ];
