@@ -1,6 +1,7 @@
 export const NAVIGATION_ITEMS = [
     { title: "About", href: "/about" },
     { title: "Projects", href: "/projects" },
+    { title: "Blogs", href: "/blogs" },
     { title: "Achievements", href: "/achievements" }
 ] as const;
 
