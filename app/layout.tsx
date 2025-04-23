@@ -10,6 +10,9 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: SITE_CONFIG.name,
   description: SITE_CONFIG.description,
+  icons: {
+    icon: '/images/icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
