@@ -3,7 +3,7 @@ import { BlogPost } from '@/types';
 export const posts: BlogPost[] = [
   {
     title: 'เขียนเว็บแบบไม่ง้อ JavaScript ด้วย HTMX',
-    slug: 'HTMX-Basic',
+    slug: 'htmx-basic',
     date: '2025-04-15',
     tags: ['HTMX', 'Go', 'Web Development'],
     description: 'Writing about what is HTMX and how to use it to build a web application.',
