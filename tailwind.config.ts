@@ -8,6 +8,13 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -83,8 +90,68 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+            color: 'var(--foreground)',
+            h1: {
+              color: 'var(--foreground)',
+              fontWeight: '800',
+              fontSize: '2.25rem',
+            },
+            h2: {
+              color: 'var(--foreground)',
+              fontWeight: '700',
+              fontSize: '1.875rem',
+            },
+            h3: {
+              color: 'var(--foreground)',
+              fontWeight: '600',
+              fontSize: '1.5rem',
+            },
+            h4: {
+              color: 'var(--foreground)',
+              fontWeight: '600',
+              fontSize: '1.25rem',
+            },
+            a: {
+              color: 'var(--primary)',
+              '&:hover': {
+                color: 'var(--primary-foreground)',
+              },
+            },
+            code: {
+              color: 'var(--primary)',
+              backgroundColor: 'var(--muted)',
+              paddingLeft: '4px',
+              paddingRight: '4px',
+              paddingTop: '2px',
+              paddingBottom: '2px',
+              borderRadius: '0.25rem',
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            },
+            figcaption: {
+              color: 'hsl(var(--muted-foreground))',
+              fontSize: '0.875rem',
+              lineHeight: '1.25rem',
+              textAlign: 'center',
+              marginTop: '0.5rem',
+              fontStyle: 'italic',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+  ],
 };
 export default config;

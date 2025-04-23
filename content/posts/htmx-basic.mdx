@@ -1,0 +1,393 @@
+---
+title: เขียนเว็บแบบไม่ง้อ JavaScript ด้วย HTMX
+date: 2025-04-15
+tags: ['HTMX', 'Go', 'Web Development']
+description: Writing about what is HTMX and how to use it to build a web application.
+lang: th
+---
+
+สวัสดีครับทุกคน! วันนี้เราจะมาทำความรู้จักกับ HTMX ซึ่งเป็น JavaScript library ที่กำลังมาแรงในวงการพัฒนาเว็บกัน
+เชื่อว่าหลายคนอาจจะเคยได้ยินชื่อ HTMX กันมาบ้างแล้ว แต่บางคนอาจจะยังไม่เข้าใจว่ามันคืออะไร และทำไมถึงน่าสนใจ ไม่เป็นไรครับ
+เดี๋ยวเราจะไปทำความรู้จักแบบเข้าใจง่ายๆกันๆกัน
+
+<ImageWithCredit src="/images/htmx-logo.png" alt="HTMX Logo" credit="" width={600} height={600} />
+
+---
+
+### HTMX คืออะไร?
+
+HTMX เป็น library ของ JavaScript ที่ช่วยให้เราสามารถใช้ความสามารถของ HTML ได้มากขึ้น โดยการเพิ่ม
+attribute พิเศษเข้าไปใน HTML element ทำให้เราสามารถส่ง HTTP request, อัพเดท content,
+จัดการ animation และอื่นๆ ได้โดยไม่ต้องง้อ JavaScript เลย!
+
+<ImageWithCredit src="/images/htmx-meme.png" alt="HTMX Meme" credit="" width={600} height={600} />
+
+---
+
+### ทำไมถึงต้องมี HTMX?
+
+ลองนึกถึงตอนที่เราเริ่มเขียนเว็บกันครั้งแรก เราแค่สร้างไฟล์ HTML ธรรมดาๆ ใส่เนื้อหาลงไป แล้วก็เปิดบน browser ได้เลย ง่ายมากๆเลยใช่ไหมครับ?
+
+แต่พอเว็บเริ่มซับซ้อนขึ้น เราก็เริ่มจะต้องใช้พวก JavaScript framework เช่น React, Vue หรือ Angular เข้ามาช่วย ต้องติดตั้ง Node.js ต้องรัน npm install
+ต้องตั้งค่า webpack หรือ build tools ต่างๆ มากมาย บางทีแค่จะเริ่มโปรเจกต์ใหม่ก็ใช้เวลาตั้งเป็นชั่วโมงแล้ว
+
+HTMX เลยเข้ามาช่วยแก้ปัญหานี้ โดยพาเรากลับไปหาความเรียบง่ายของ HTML แต่เพิ่มความสามารถให้มันทำอะไรได้มากขึ้น
+
+#### 1. การส่งข้อมูลไปที่ server
+
+แบบเดิม เราต้องเขียน JavaScript ประมาณนี้:
+
+```js
+fetch('/api/submit', {
+  method: 'POST',
+  body: JSON.stringify(data),
+}).then(response => {
+  // response handling
+});
+```
+
+แต่ด้วย HTMX แค่เขียน:
+
+```html
+<form hx-post="/submit" hx-target="#message-list" hx-swap="beforeend">
+  <input type="text" name="message" />
+  <button type="submit">ส่งข้อมูล</button>
+</form>
+```
+
+ตอนนี้ฟอร์มของเราจะสามารถส่งข้อมูลแบบ AJAX และแสดงผลได้ทันทีโดยไม่ต้อง refresh หน้าเว็บเลย
+
+#### 2. การอัพเดทหน้าเว็บ
+
+แบบเดิม:
+
+```js
+fetch('/api/data')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('result').innerHTML = `
+      <div>${data.content}</div>
+    `;
+  });
+```
+
+แต่ด้วย HTMX แค่เขียน:
+
+```html
+<div hx-get="/api/data" hx-trigger="click">คลิกเพื่อโหลดข้อมูล</div>
+```
+
+#### 3. การทำ Animation
+
+แบบเดิม เราต้องเขียน JavaScript เยอะมาก แต่ด้วย HTMX แค่ใส่:
+
+```html
+<div hx-get="/api/content" hx-swap="outerHTML swap:1s">เนื้อหา</div>
+```
+
+เห็นไหมครับว่า HTMX ช่วยให้การพัฒนาเว็บกลับมาเรียบง่ายเหมือนเดิม
+แต่ยังคงความสามารถในการโต้ตอบกับผู้ใช้ได้ดี แถมยังลดความซับซ้อนของโค้ดลงไปได้มากเลยทีเดียว
+
+---
+
+### ข้อดีของ HTMX
+
+- **ลดความซับซ้อน**: HTMX ช่วยลดความซับซ้อนในการพัฒนาเว็บด้วยการที่ไม่ต้องเขียน JavaScript มากมาย
+  และไม่ต้องจัดการกับ state ที่ซับซ้อน ซึ่งส่งผลให้ลดความเสี่ยงในการเกิด bugs
+  และทำให้การพัฒนาเป็นไปได้อย่างง่ายดาย
+
+- **Performance ดี**: ด้วยขนาดไฟล์ที่เล็กและความสามารถในการโหลดได้อย่างรวดเร็ว HTMX
+  จึงช่วยให้เว็บแอปทำงานได้อย่างลื่นไหล โดยใช้ทรัพยากรระบบต่ำลง ทำให้มีประสิทธิภาพที่ดีขึ้นมาก
+
+- **SEO Friendly**: HTMX รองรับการทำงานร่วมกับ Server-Side Rendering (SSR) อย่างดี ทำให้ search engine
+  สามารถเข้าใจและจัดอันดับเนื้อหาได้ง่ายขึ้น ช่วยเพิ่มประสิทธิภาพของ SEO ได้เป็นอย่างดี
+
+- **Developer Experience**: การเรียนรู้และการ debug โค้ดใน HTMX นั้นทำได้ง่าย
+  เนื่องจากมีโครงสร้างที่เรียบง่ายและตรงไปตรงมา ทำให้การ maintenance
+  และการพัฒนาต่อยอดเป็นไปได้อย่างมีประสิทธิภาพ และช่วยลดภาระในการทำงานของทีมได้
+
+---
+
+### แล้ว HTMX ทำงานยังไงหล่ะ?
+
+HTMX ทำงานเหมือนผู้ช่วยที่คอยแปลง HTML ธรรมดาๆ ให้มีความสามารถพิเศษ โดยใช้หลักการง่ายๆ 3 ข้อ:
+
+#### 1. Progressive Enhancement (การพัฒนาแบบค่อยเป็นค่อยไป)
+
+หลักการนี้บอกว่าเราควรเริ่มจากพื้นฐานที่ทุกคนใช้ได้ก่อน แล้วค่อยๆ เพิ่มความสามารถพิเศษเข้าไปทีหลัง
+
+- ตัวอย่างเช่น: ถ้าเราทำฟอร์มสำหรับส่งข้อมูล เราควรเริ่มจาก HTML พื้นฐานก่อน
+
+```html
+<form action="/submit" method="post">
+  <input type="text" name="message" />
+  <button type="submit">ส่งข้อมูล</button>
+</form>
+```
+
+- แล้วค่อยเพิ่มความสามารถพิเศษเข้าไป:
+
+```html
+<form hx-post="/submit" hx-target="#message-list" hx-swap="beforeend">
+  <input type="text" name="message" />
+  <button type="submit">ส่งข้อมูล</button>
+</form>
+```
+
+ตอนนี้ฟอร์มของเราจะสามารถส่งข้อมูลแบบ AJAX และแสดงผลได้ทันทีโดยไม่ต้อง refresh หน้าเว็บเลย
+
+#### 2. Hypermedia as the Engine of Application State (HATEOAS)
+
+หลักการนี้บอกว่าเราควรใช้ HTML เป็นสื่อกลางในการสื่อสารระหว่าง Frontend และ Backend แทนที่จะใช้ JSON
+
+ตัวอย่างเช่น: เพิ่มข้อความใหม่เข้าไปในลิสต์
+
+- Backend (Go):
+
+```go
+func addMessage(c *gin.Context) {
+	message := c.PostForm("message")
+
+	c.HTML(200, "message-item.html", gin.H{
+		"message": message,
+	})
+}
+```
+
+- Template (message-item.html):
+
+```html
+<div class="message">{{.message}}</div>
+```
+
+- Frontend (HTML + HTMX):
+
+```html
+<div id="message-list" hx-target="this" hx-swap="beforeend">
+  <!-- ข้อความจะถูกเพิ่มตรงนี้ -->
+</div>
+```
+
+เราจะได้ HTML ที่พร้อมแสดงผลเลย โดยไม่ต้องมาแปลง JSON เป็น HTML ให้วุ่นวาย
+
+#### 3. Locality of Behavior (LoB)
+
+หลักการนี้บอกว่าเราควรเขียนโค้ดที่บอกว่าต้องทำอะไรไว้ที่ส่วนนั้นๆ เลย ไม่ต้องแยกไปเขียน JavaScript ที่อื่น
+
+ตัวอย่างเช่น: เรามีปุ่มที่ต้องการให้โหลดข้อมูลเมื่อคลิก
+
+```html
+<div class="container">
+  <button hx-get="/api/data" hx-target="next div" hx-trigger="click">โหลดข้อมูล</button>
+  <div class="result">
+    <!-- ผลลัพธ์จะแสดงตรงนี้ -->
+  </div>
+</div>
+```
+
+แค่นี้เราก็รู้ได้เลยว่าปุ่มนี้ทำอะไร โดยไม่ต้องไปตามหา JavaScript ที่ควบคุมมัน ทำให้โค้ดอ่านง่ายและ maintenance ได้ง่าย
+ตัวอย่างการใช้งาน HTMX + GO
+
+---
+
+### มาดูตัวอย่างการสร้าง Todo App ด้วย HTMX และ Go:
+
+#### ขั้นตอนที่ 1. ตั้งค่าโปรเจค
+
+```shell
+mkdir htmx-demo
+cd htmx-demo
+go mod init htmx-demo
+
+# Install libs สำหรับสร้าง api
+go get github.com/gin-gonic/gin
+```
+
+#### ขั้นตอนที่ 2. สร้าง API สำหรับจัดการ Todo
+
+- `main.go`:
+
+```go
+package main
+
+import (
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
+
+type Todo struct {
+	ID        int
+	Task      string
+	Completed bool
+}
+
+var todos []Todo
+
+func main() {
+	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
+
+	// home page
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.html", gin.H{
+			"todos": todos,
+		})
+	})
+
+	// add todo
+	r.POST("/todos", func(c *gin.Context) {
+		task := c.PostForm("task")
+		todo := Todo{
+			ID:        len(todos) + 1,
+			Task:      task,
+			Completed: false,
+		}
+
+		todos = append(todos, todo)
+		c.HTML(200, "todo-item.html", todo)
+	})
+
+	// toggle todo
+	r.POST("/todos/:id/toggle", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.Status(400)
+			return
+		}
+
+		for i := range todos {
+			if todos[i].ID == id {
+				todos[i].Completed = !todos[i].Completed
+				c.HTML(200, "todo-item.html", todos[i])
+				return
+			}
+		}
+		c.Status(404)
+	})
+
+	// delete todo
+	r.DELETE("/todos/:id", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.Status(400)
+			return
+		}
+
+		for i := range todos {
+			if todos[i].ID == id {
+				todos = append(todos[:i], todos[i+1:]...)
+				c.Status(200)
+				return
+			}
+		}
+		c.Status(404)
+	})
+
+	r.Run(":8080")
+}
+```
+
+#### ขั้นตอนที่ 3. สร้างไฟล์ html สำหรับแสดงผล
+
+สร้างโฟลเดอร์ templates และไฟล์ index.html , todo-item.html
+
+```shell
+mkdir -p templates
+```
+
+- `index.html`:
+
+```html
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Todo App</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+      .htmx-indicator {
+        display: none;
+      }
+      .htmx-request .htmx-indicator {
+        display: inline;
+      }
+      .completed {
+        text-decoration: line-through;
+        color: #888;
+      }
+      .todo-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .todo-item input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+      }
+      .todo-item button {
+        padding: 5px 10px;
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .todo-item button:hover {
+        background-color: #cc0000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <form hx-post="/todos" hx-target="#todo-list" hx-swap="beforeend">
+      <input type="text" name="task" required placeholder="เพิ่มงานใหม่..." />
+      <button type="submit">เพิ่ม</button>
+      <span class="htmx-indicator">กำลังเพิ่ม...</span>
+    </form>
+
+    <div id="todo-list">{{range .todos}} {{template "todo-item.html" .}} {{end}}</div>
+  </body>
+</html>
+```
+
+- `todo-item.html`:
+
+```html
+<div class="todo-item" hx-target="this" hx-swap="outerHTML">
+  <input type="checkbox" hx-post="/todos/{{.ID}}/toggle" {{if .Completed}}checked{{end}} />
+  <span class="{{if .Completed}}completed{{end}}"> {{.Task}} </span>
+  <button hx-delete="/todos/{{.ID}}">ลบ</button>
+</div>
+```
+
+#### ขั้นตอนที่ 4. start server
+
+```shell
+go run main.go
+```
+
+เปิด browser และไปที่ http://localhost:8080
+
+<ImageWithCredit
+  src="/images/htmx-demo.png"
+  alt="HTMX Demo"
+  credit="localhost:8080"
+  width={800}
+  height={800}
+/>
+
+เพียงแค่นี้เราก็จะได้ Todo App ง่ายๆ ด้วย HTMX + GO ได้แล้ว
+
+> Source Code: [https://github.com/Supakornn/htmx-demo](https://github.com/Supakornn/htmx-demo)
+
+---
+
+### สรุปปปป!
+
+HTMX เป็นเครื่องมือที่น่าสนใจมากๆสำหรับการพัฒนาเว็บแอปพลิเคชัน มันช่วยให้เราสามารถสร้างเว็บแอปที่ interactive ได้โดยไม่ต้องเขียน JavaScript เยอะแยะ เหมาะสำหรับโปรเจกต์ที่ต้องการความเรียบง่ายแต่ยังคงความสามารถครบครัน

@@ -34,7 +34,545 @@
   }
 }
 
+/* More direct heading selectors for markdown content */
+.mdx-content h1,
+.prose h1 {
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.2 !important;
+}
+
+.mdx-content h2,
+.prose h2 {
+  font-size: 1.875rem !important;
+  font-weight: 700 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1.25rem !important;
+  line-height: 1.3 !important;
+}
+
+.mdx-content h3,
+.prose h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.4 !important;
+}
+
+.mdx-content h4,
+.prose h4 {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(10px);
+}
+
+/* Animation for page transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for code blocks */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* MDX content specific styles */
+.mdx-content h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.mdx-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.mdx-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.mdx-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mdx-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  font-size: 1.125rem;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  font-size: 1.125rem;
+}
+
+.mdx-content li {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+/* Override prose defaults for better text size */
+.prose p,
+.prose ul,
+.prose ol,
+.prose li {
+  font-size: 1.125rem !important;
+}
+
+/* Apply animations to MDX content */
+.mdx-content h1,
+.mdx-content h2,
+.mdx-content h3,
+.mdx-content h4,
+.mdx-content p,
+.mdx-content ul,
+.mdx-content ol,
+.mdx-content blockquote {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.mdx-content pre {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Stagger the animations */
+.mdx-content h1 {
+  animation-delay: 0.1s;
+}
+.mdx-content h2 {
+  animation-delay: 0.2s;
+}
+.mdx-content h3 {
+  animation-delay: 0.3s;
+}
+.mdx-content p {
+  animation-delay: 0.4s;
+}
+.mdx-content ul,
+.mdx-content ol {
+  animation-delay: 0.5s;
+}
+.mdx-content blockquote {
+  animation-delay: 0.6s;
+}
+.mdx-content pre {
+  animation-delay: 0.7s;
+}
+
+/* Dark mode adjustments for code highlighting */
+.dark pre {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.dark code {
+  color: #e6e6e6;
+}
+
+/* Code block language label */
+pre .language-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #2d3748;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Scale down the prose content */
+.prose {
+  @apply max-w-none text-sm;
+}
+
+.prose h1 {
+  @apply text-xl;
+}
+
+.prose h2 {
+  @apply text-lg;
+}
+
+.prose h3 {
+  @apply text-base;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-sm;
+}
+
+.prose p,
+.prose li {
+  @apply text-sm;
+}
+
+.prose blockquote {
+  @apply text-sm;
+}
+
+.prose pre {
+  @apply text-xs;
+}
+
+/* Update inline code styling with light yellow background */
+.prose code:not(pre code),
+.mdx-content code:not(pre code) {
+  background-color: #fef9c3 !important; /* Light yellow background */
+  color: #854d0e !important; /* Amber text color */
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.9em !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace !important;
+  white-space: nowrap !important;
+}
+
+/* Dark mode styling for inline code */
+.dark .prose code:not(pre code),
+.dark .mdx-content code:not(pre code) {
+  background-color: rgba(254, 249, 195, 0.1) !important; /* Translucent yellow in dark mode */
+  color: #fef08a !important; /* Lighter yellow text in dark mode */
+}
+
+/* Keep code blocks with their current styling */
+pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  white-space: pre !important;
+}
+
+/* Image caption/credit styling */
+.image-caption,
+.img-caption,
+figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280; /* text-gray-500 */
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Add styling for figure elements */
+figure {
+  margin-bottom: 2rem;
+}
+
+/* Target direct image + figcaption combinations in MDX */
+.mdx-content figure,
+.prose figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mdx-content figure img,
+.prose figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Style for image credits that are added using a special div after images */
+.mdx-content img + .image-credit,
+.prose img + .image-credit {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280; /* text-gray-500 */
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Code block styling fixes - after the existing pre code styles */
+
+/* Fix for triple backtick code blocks */
+.mdx-content pre {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.375rem;
+}
+
+.mdx-content pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  white-space: pre !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace !important;
+}
+
+/* Fix for HTML comments inside code blocks */
+.mdx-content pre code .comment,
+.mdx-content pre .hljs-comment {
+  color: #8b949e !important;
+  font-style: italic;
+}
+
+/* Ensure HTML tags are properly colored */
+.mdx-content pre code .tag,
+.mdx-content pre .hljs-tag,
+.mdx-content pre .hljs-name {
+  color: #7ee787 !important;
+}
+
+.mdx-content pre code .attr,
+.mdx-content pre .hljs-attr {
+  color: #d2a8ff !important;
+}
+
+.mdx-content pre code .string,
+.mdx-content pre .hljs-string {
+  color: #a5d6ff !important;
+}
+
+/* Language badge styling */
+.mdx-content pre .language-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #2d3748;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Adjust text spacing within paragraphs */
+.mdx-content {
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+}
+
+.mdx-content p {
+  margin-bottom: 1.5rem !important;
+  font-size: 1.125rem !important;
+  letter-spacing: 0.01em;
+  word-spacing: 0.1em;
+  line-height: 1.8 !important; /* Improved line height for all text */
+}
+
+.mdx-content h1,
+.mdx-content h2,
+.mdx-content h3,
+.mdx-content h4 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.4 !important;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.mdx-content li {
+  margin-bottom: 0.75rem !important;
+}
+
+.mdx-content pre {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Add more spacing between sections using div className="mt-X" elements */
+.mdx-content .mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mdx-content .mt-8 {
+  margin-top: 2.5rem !important;
+}
+
+/* Increase spacing after images */
+.mdx-content figure {
+  margin-top: 2rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Thai text specific spacing */
+.mdx-content:lang(th) p,
+.mdx-content p:lang(th),
+.mdx-content [lang='th'] {
+  letter-spacing: 0.02em;
+  word-spacing: 0.12em;
+  line-height: 2;
+  margin-bottom: 1rem; /* Added margin for Thai text */
+}
+
+/* Apply Thai-like spacing to all paragraph content for better readability */
+.mdx-content > p {
+  letter-spacing: 0.015em;
+  word-spacing: 0.1em;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+/* Adjust line height for Thai list items */
+.mdx-content:lang(th) li,
+.mdx-content li:lang(th) {
+  letter-spacing: 0.02em;
+  word-spacing: 0.12em;
+  line-height: 2;
+}
+
+/* Fix code block spacing in MDX content */
+.mdx-content h3 + p,
+.mdx-content h4 + p,
+.mdx-content p + pre {
+  margin-top: 0.5rem !important;
+}
+
+.mdx-content pre {
+  margin-top: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Medium-style fixed-width code blocks */
+.mdx-content,
+.prose {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.mdx-content > *,
+.prose > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 720px !important;
+}
+
+.mdx-content pre,
+.prose pre {
+  width: 100% !important;
+  max-width: 720px !important;
+  margin: 1.5rem auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  padding: 1.5rem !important;
+  overflow-x: auto !important;
+  font-size: 0.9rem !important;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace !important;
+  line-height: 1.6 !important;
+  position: relative !important;
+}
+
+/* Language badge on code blocks */
+/* .mdx-content pre::before,
+.prose pre::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  background-color: rgba(30, 41, 59, 0.7);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0 0 0 4px;
+} */
+
+/* Add styling to code lines and tokens */
+.mdx-content pre code {
+  display: block;
+  counter-reset: line;
+  white-space: pre;
+}
+
+/* Syntax highlighting improvements */
+.mdx-content pre code .token.comment,
+.mdx-content pre code .token.prolog,
+.mdx-content pre code .token.doctype,
+.mdx-content pre code .token.cdata {
+  color: #8292a2 !important;
+}
+
+.mdx-content pre code .token.punctuation {
+  color: #e2e8f0 !important;
+}
+
+.mdx-content pre code .token.property,
+.mdx-content pre code .token.tag,
+.mdx-content pre code .token.boolean,
+.mdx-content pre code .token.number,
+.mdx-content pre code .token.constant,
+.mdx-content pre code .token.symbol {
+  color: #f59e0b !important;
+}
+
+.mdx-content pre code .token.selector,
+.mdx-content pre code .token.attr-name,
+.mdx-content pre code .token.string,
+.mdx-content pre code .token.char,
+.mdx-content pre code .token.builtin {
+  color: #10b981 !important;
+}
+
+.mdx-content pre code .token.operator,
+.mdx-content pre code .token.entity,
+.mdx-content pre code .token.url,
+.mdx-content pre code .language-css .token.string,
+.mdx-content pre code .style .token.string {
+  color: #ef4444 !important;
+}
+
+.mdx-content pre code .token.atrule,
+.mdx-content pre code .token.attr-value,
+.mdx-content pre code .token.keyword {
+  color: #3b82f6 !important;
+}
+
+.mdx-content pre code .token.function,
+.mdx-content pre code .token.class-name {
+  color: #f472b6 !important;
 }
