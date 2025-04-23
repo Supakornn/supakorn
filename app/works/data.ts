@@ -10,7 +10,7 @@ export const works: Work[] = [
     title: 'Thai Bad Words',
     description: 'A library for detecting inappropriate Thai words in text content.',
     tags: ['TypeScript', 'Library'],
-    link: 'https://github.com/SIT-SandBox/thai-bad-words',
+    link: 'https://www.npmjs.com/package/@sit-sandbox/thai-bad-words',
   },
   {
     title: 'Goscanner',
