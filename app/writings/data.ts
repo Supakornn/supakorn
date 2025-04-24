@@ -20,7 +20,7 @@ export const posts: BlogPost[] = [
   {
     title: 'STH-Mini-Web-CTF-2025 — Write Up',
     slug: 'sth-mini-web-ctf-2025-write-up',
-    date: '2025-04-6',
+    date: '2025-04-06',
     tags: ['CTF', 'Hacking'],
     description: 'Write up for the STH-Mini-Web-CTF-2025.',
     link: '/writings/sth-mini-web-ctf-2025-write-up',

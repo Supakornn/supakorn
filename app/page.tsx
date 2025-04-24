@@ -47,7 +47,6 @@ export default function Home() {
           <span className="text-lg underline decoration-yellow-500">Freelance Developer</span> for 2
           years. I work with my friends to develop web applications for clients.
         </p> */}
-
         <p className="text-lg text-primary-foreground fade-in">
           view my resume{' '}
           <Link href="https://resume.supakorn.info" className="text-yellow-500 underline">
