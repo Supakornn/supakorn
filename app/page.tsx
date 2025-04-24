@@ -42,11 +42,11 @@ export default function Home() {
           </span>
           , studying Information Technology.
         </p>
-        <p className="text-lg text-primary-foreground fade-in">
+        {/* <p className="text-lg text-primary-foreground fade-in">
           I&apos;m have beed working as a{' '}
           <span className="text-lg underline decoration-yellow-500">Freelance Developer</span> for 2
           years. I work with my friends to develop web applications for clients.
-        </p>
+        </p> */}
 
         <p className="text-lg text-primary-foreground fade-in">
           view my resume{' '}
