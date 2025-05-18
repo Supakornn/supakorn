@@ -14,7 +14,7 @@ export function Footer() {
             . All rights reserved.
           </div>
           <a
-            href="https://webring.wonderful.software#supakornn.info"
+            href="https://webring.wonderful.software#supakorn.info"
             title="วงแหวนเว็บ"
             className="absolute right-0 top-1/2 -translate-y-1/2"
           >
