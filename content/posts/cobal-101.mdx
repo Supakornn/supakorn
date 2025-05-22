@@ -1,0 +1,180 @@
+---
+title: COBOL 101
+date: 2025-05-22
+tags: ['COBOL', 'Legacy Systems', 'Mainframe', 'Programming']
+description: Writing about what is COBOL and how to use it in modern applications.
+lang: th
+---
+
+สวัสดีครับทุกคน! วันนี้เราจะมาทำความรู้จักกับ COBOL ซึ่งเป็นภาษาโปรแกรมมิ่งที่มีอายุยาวนานและยังคงเป็นกระดูกสันหลังของระบบการเงินและรัฐบาลทั่วโลก
+แม้จะเป็นภาษาที่เก่าแก่มากๆ แต่ COBOL ยังมีความสำคัญมากในปัจจุบัน มาทำความรู้จักกันแบบเข้าใจง่ายๆ กัน
+
+<ImageWithCredit
+  src="/images/cobal-logo.png"
+  alt="COBOL Logo"
+  credit="https://www.redbubble.com/i/sticker/Cobol-Programmer-by-vladocar/42223547.EJUG5"
+  width={600}
+  height={600}
+/>
+
+---
+
+### COBOL คืออะไร?
+
+COBOL ย่อมาจาก Common Business-Oriented Language เป็นภาษาโปรแกรมมิ่งที่ถูกพัฒนาขึ้นในปี 1959 โดยคณะกรรมการ CODASYL (Conference on Data Systems Languages) โดยมี Dr. Grace Hopper ผู้เชี่ยวชาญด้านคอมพิวเตอร์จากกองทัพเรือสหรัฐฯ เป็นหนึ่งในผู้มีอิทธิพลสำคัญต่อการออกแบบ
+
+COBOL ถูกออกแบบมาเพื่อใช้ในการพัฒนาโปรแกรมทางธุรกิจโดยเฉพาะ มีรูปแบบการเขียนคล้ายภาษาอังกฤษที่อ่านง่าย ทำให้เหมาะสำหรับการจัดการข้อมูลจำนวนมากและการคำนวณทางการเงิน
+
+<ImageWithCredit
+  src="/images/grace-hopper.png"
+  alt="Grace Hopper"
+  credit="https://wikipedia.org/wiki/"
+  width={600}
+  height={400}
+/>
+
+---
+
+### ทำไม COBOL ถึงยังใช้งานอยู่ในปัจจุบัน?
+
+หลายคนอาจสงสัยว่าทำไมภาษาโปรแกรมมิ่งที่มีอายุมากกว่า 60 ปีถึงยังคงถูกใช้งานอยู่ในปัจจุบัน
+
+#### 1. ความเสถียรและความน่าเชื่อถือ
+
+COBOL เป็นภาษาที่ได้รับการพิสูจน์แล้วว่ามีความเสถียรสูงมาก โปรแกรมที่เขียนด้วย COBOL สามารถทำงานได้อย่างต่อเนื่องเป็นทศวรรษโดยไม่มีปัญหา ในโลกของการเงินและการธนาคาร ความเสถียรสำคัญกว่าความทันสมัย
+
+#### 2. การประมวลผลข้อมูลจำนวนมาก
+
+COBOL มีความสามารถสูงมากในการจัดการธุรกรรมจำนวนมหาศาล สามารถประมวลผลข้อมูลจำนวนมากได้อย่างมีประสิทธิภาพ ซึ่งเป็นคุณสมบัติที่จำเป็นสำหรับระบบธนาคารและการประมวลผลต่างๆทางการเงิน
+
+#### 3. การลงทุนในระบบเดิม
+
+หลายองค์กรได้ลงทุนเป็นจำนวนมากในระบบ COBOL ตลอดหลายปีที่ผ่านมา การเปลี่ยนไปใช้เทคโนโลยีใหม่จะมีค่าใช้จ่ายและความเสี่ยงที่สูง ถ้าระบบ COBOL ยังคงทำงานได้ดี หลายองค์กรก็เลือกที่จะใช้งานต่อไป
+
+---
+
+### โครงสร้างของภาษา COBOL
+
+ภาษา COBOL มีโครงสร้างที่เป็นระเบียบและแบ่งเป็นส่วนๆ อย่างชัดเจน ประกอบด้วยส่วนหลักๆ 4 ส่วน:
+
+#### 1. IDENTIFICATION DIVISION
+
+เป็นส่วนที่ใช้กำหนดชื่อโปรแกรมและข้อมูลเกี่ยวกับโปรแกรม เช่น ผู้เขียน, วันที่เขียน
+
+```cobol
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+AUTHOR. SUPAKORN.
+```
+
+#### 2. ENVIRONMENT DIVISION
+
+เป็นส่วนที่ใช้กำหนดสภาพแวดล้อมของการประมวลผล เช่น ระบบคอมพิวเตอร์ที่ใช้, อุปกรณ์ input/output
+
+```cobol
+ENVIRONMENT DIVISION.
+CONFIGURATION SECTION.
+SOURCE-COMPUTER. IBM-MAINFRAME.
+OBJECT-COMPUTER. IBM-MAINFRAME.
+```
+
+#### 3. DATA DIVISION
+
+เป็นส่วนที่ใช้ประกาศตัวแปรและโครงสร้างของข้อมูลต่างๆ ที่ใช้ในโปรแกรม
+
+```cobol
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 GREETING PIC X(20) VALUE 'HELLO, WORLD!'.
+01 USER-NAME PIC X(30).
+```
+
+#### 4. PROCEDURE DIVISION
+
+เป็นส่วนที่ใช้เขียนคำสั่งต่างๆ ที่ให้โปรแกรมทำงาน
+
+```cobol
+PROCEDURE DIVISION.
+    DISPLAY 'ENTER YOUR NAME: '.
+    ACCEPT USER-NAME.
+    DISPLAY 'HELLO, ' USER-NAME.
+    STOP RUN.
+```
+
+---
+
+### ตัวอย่างโปรแกรม COBOL แบบง่ายๆ
+
+ตัวอย่างโปรแกรม COBOL แบบง่ายๆ ที่จะแสดงผลข้อความ "HELLO WORLD" และคำนวณค่าเงินในบัญชีหลังจากได้ดอกเบี้ย:
+
+```cobol
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-BANKING.
+AUTHOR. SUPAKORN.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 ACCOUNT-DETAILS.
+   05 BALANCE            PIC 9(7)V99 VALUE 10000.00.
+   05 INTEREST-RATE      PIC 9(2)V99 VALUE 3.50.
+   05 NEW-BALANCE        PIC 9(7)V99.
+   05 INTEREST-AMOUNT    PIC 9(7)V99.
+
+PROCEDURE DIVISION.
+    DISPLAY "HELLO WORLD - COBOL BANKING SYSTEM".
+    DISPLAY "CURRENT BALANCE: $" BALANCE.
+    DISPLAY "INTEREST RATE: " INTEREST-RATE "%".
+
+    COMPUTE INTEREST-AMOUNT = BALANCE * (INTEREST-RATE / 100).
+    COMPUTE NEW-BALANCE = BALANCE + INTEREST-AMOUNT.
+
+    DISPLAY "INTEREST EARNED: $" INTEREST-AMOUNT.
+    DISPLAY "NEW BALANCE: $" NEW-BALANCE.
+
+    STOP RUN.
+```
+
+ผลลัพธ์:
+
+```
+HELLO WORLD - COBOL BANKING SYSTEM
+CURRENT BALANCE: $10000.00
+INTEREST RATE: 3.50%
+INTEREST EARNED: $350.00
+NEW BALANCE: $10350.00
+```
+
+---
+
+### สรุปปปปป!
+
+### COBOL ในยุคปัจจุบัน
+
+ถึง COBOL จะเป็นภาษาที่เก่าแก่ แต่มันยังคงได้รับการพัฒนาอย่างต่อเนื่อง โดยเวอร์ชั่นล่าสุดคือ COBOL 2023 ซึ่งมีฟีเจอร์ใหม่ๆ, การรองรับ Unicode, Javascript JSON และอื่นๆ ที่ทันสมัยมากขึ้น
+
+### อนาคตของ COBOL
+
+COBOL มีแนวโน้มที่จะยังถูกใช้งานต่อไปอีกหลายปี ถึงจะขาดแคลนบุคลากร แต่หลายองค์กรก็เริ่มลงทุนในการฝึกอบรมคนรุ่นใหม่ให้เข้าใจและทำงานกับระบบ COBOL ได้
+
+#### ความท้าทาย
+
+1. **การขาดแคลนโปรแกรมเมอร์**: โปรแกรมเมอร์ COBOL จำนวนมากกำลังเกษียณอายุ
+2. **การบำรุงรักษาระบบเก่า**: ระบบ COBOL หลายระบบมีอายุมากกว่า 30-40 ปี ทำให้การบำรุงรักษาทำได้ยากขึ้น
+3. **การทำงานกับเทคโนโลยีใหม่**: การเชื่อมต่อระบบ COBOL เก่ากับเทคโนโลยีสมัยใหม่เป็นความท้าทายมากๆทางเทคนิค
+
+#### โอกาส
+
+1. **การต่อยอดอาชีพ**: โปรแกรมเมอร์ที่มีทักษะ COBOL มีความต้องการสูงและได้เงินเดือนสูง
+2. **การ Modernization**: การปรับปรุงระบบ COBOL ให้ทันสมัยโดยไม่ต้องเปลี่ยนระบบทั้งหมด
+3. **กระแส Retro Programming**: มีความสนใจจากโปรแกรมเมอร์รุ่นใหม่ที่ต้องการเรียนรู้เทคโนโลยีเก่า เพื่อเติบโตในสายงานนี้
+
+---
+
+ถึง COBOL จะเป็นภาษาโปรแกรมมิ่งที่มีอายุมากกว่า 60 ปี แต่ด้วยความเสถียรและความน่าเชื่อถือ ทำให้ COBOL ยังคงเป็นกระดูกสันหลังของระบบการเงินและรัฐบาลทั่วโลก
+
+---
+
+### References
+
+- [COBOL Wikipedia](https://en.wikipedia.org/wiki/COBOL)
+- [Cobal-Programming-Course](https://github.com/openmainframeproject/cobol-programming-course)

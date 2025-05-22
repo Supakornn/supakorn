@@ -25,4 +25,12 @@ export const posts: BlogPost[] = [
     description: 'Write up for the STH-Mini-Web-CTF-2025.',
     link: '/writings/sth-mini-web-ctf-2025-write-up',
   },
+  {
+    title: 'COBAL-101',
+    slug: 'cobal-101',
+    date: '2025-05-022',
+    tags: ['COBAL', 'Mainframe', 'Programming'],
+    description: 'Writing about COBAL and how to use it.',
+    link: '/writings/cobal-101',
+  },
 ];
