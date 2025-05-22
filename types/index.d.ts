@@ -5,11 +5,12 @@ export interface BlogPost {
   tags: string[];
   description: string;
   link: string;
+  category: string;
 }
 
 declare module '*.mdx' {
   import { ReactNode } from 'react';
-  
+
   const MDXComponent: (props: any) => ReactNode;
   export default MDXComponent;
-} 
+}

@@ -72,13 +72,20 @@ export async function getAllPosts(): Promise<BlogPost[]> {
       const post = await getPostBySlug(slug);
       const { frontMatter } = post;
 
+      // Get tags and determine category
+      const tags = frontMatter.tags || [];
+
+      // Use first tag as category, or "Uncategorized" if no tags
+      const category = tags.length > 0 ? tags[0] : 'General';
+
       return {
         slug: post.slug,
         title: frontMatter.title,
         date: frontMatter.date,
-        tags: frontMatter.tags || [],
+        tags: tags,
         description: frontMatter.description || '',
         link: `/writings/${post.slug}`,
+        category: category,
       } as BlogPost;
     })
   );

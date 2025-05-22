@@ -1,8 +1,6 @@
-import { getAllPosts } from '@/lib/mdx';
 import WritingList from '@/components/writing-list';
+import { posts } from './data';
 
-export default async function Writings() {
-  const posts = await getAllPosts();
-
+export default function Writings() {
   return <WritingList posts={posts} />;
 }

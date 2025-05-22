@@ -8,6 +8,7 @@ export const posts: BlogPost[] = [
     tags: ['COBAL', 'Mainframe', 'Programming'],
     description: 'Writing about COBAL and how to use it.',
     link: '/writings/cobal-101',
+    category: 'Programming',
   },
   {
     title: 'เขียนเว็บแบบไม่ง้อ JavaScript ด้วย HTMX',
@@ -16,6 +17,7 @@ export const posts: BlogPost[] = [
     tags: ['HTMX', 'Go', 'Web Development'],
     description: 'Writing about what is HTMX and how to use it to build a web application.',
     link: '/writings/htmx-basic',
+    category: 'Web Development',
   },
   {
     title: 'WebAssembly (WASM) ด้วยภาษา Zig — เขียนเว็บด้วยความเร็วระดับ Native',
@@ -24,6 +26,7 @@ export const posts: BlogPost[] = [
     tags: ['WebAssembly', 'Zig', 'Web Development'],
     description: 'Writing about what is WebAssembly and how to use it with Zig.',
     link: '/writings/wasm-with-zig',
+    category: 'Web Development',
   },
   {
     title: 'STH-Mini-Web-CTF-2025 — Write Up',
@@ -32,5 +35,6 @@ export const posts: BlogPost[] = [
     tags: ['CTF', 'Hacking'],
     description: 'Write up for the STH-Mini-Web-CTF-2025.',
     link: '/writings/sth-mini-web-ctf-2025-write-up',
+    category: 'CTF',
   },
 ];
