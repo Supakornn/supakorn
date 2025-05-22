@@ -2,7 +2,7 @@ import { BlogPost } from '@/types';
 
 export const posts: BlogPost[] = [
   {
-    title: 'COBAL-101',
+    title: 'COBAL 101',
     slug: 'cobal-101',
     date: '2025-05-22',
     tags: ['COBAL', 'Mainframe', 'Programming'],
