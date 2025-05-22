@@ -2,6 +2,14 @@ import { BlogPost } from '@/types';
 
 export const posts: BlogPost[] = [
   {
+    title: 'COBAL-101',
+    slug: 'cobal-101',
+    date: '2025-05-22',
+    tags: ['COBAL', 'Mainframe', 'Programming'],
+    description: 'Writing about COBAL and how to use it.',
+    link: '/writings/cobal-101',
+  },
+  {
     title: 'เขียนเว็บแบบไม่ง้อ JavaScript ด้วย HTMX',
     slug: 'htmx-basic',
     date: '2025-04-15',
@@ -24,13 +32,5 @@ export const posts: BlogPost[] = [
     tags: ['CTF', 'Hacking'],
     description: 'Write up for the STH-Mini-Web-CTF-2025.',
     link: '/writings/sth-mini-web-ctf-2025-write-up',
-  },
-  {
-    title: 'COBAL-101',
-    slug: 'cobal-101',
-    date: '2025-05-022',
-    tags: ['COBAL', 'Mainframe', 'Programming'],
-    description: 'Writing about COBAL and how to use it.',
-    link: '/writings/cobal-101',
   },
 ];
