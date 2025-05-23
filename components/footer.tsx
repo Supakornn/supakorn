@@ -13,21 +13,6 @@ export function Footer() {
             </a>
             . All rights reserved.
           </div>
-          <a
-            href="https://webring.wonderful.software#supakorn.info"
-            title="วงแหวนเว็บ"
-            className="absolute right-6"
-          >
-            <div className="group relative h-8 w-8 opacity-60 hover:text-yellow-700 hover:opacity-100">
-              <Image
-                alt="วงแหวนเว็บ"
-                width={32}
-                height={32}
-                src="https://webring.wonderful.software/webring.black.svg"
-                className="transition-transform duration-700 hover:rotate-360 group-hover:[filter:invert(48%)_sepia(13%)_saturate(3207%)_hue-rotate(0deg)_brightness(95%)_contrast(95%)]"
-              />
-            </div>
-          </a>
         </div>
       </div>
     </footer>
