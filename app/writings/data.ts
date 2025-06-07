@@ -2,12 +2,12 @@ import { BlogPost } from '@/types';
 
 export const posts: BlogPost[] = [
   {
-    title: 'COB0L 101',
-    slug: 'cobal-101',
+    title: 'COBOL 101',
+    slug: 'cobol-101',
     date: '2025-05-22',
-    tags: ['COBAL', 'Mainframe', 'Programming'],
-    description: 'Writing about COBAL and how to use it.',
-    link: '/writings/cobal-101',
+    tags: ['COBOL', 'Mainframe', 'Programming'],
+    description: 'Writing about COBOL and how to use it.',
+    link: '/writings/cobol-101',
     category: 'Programming',
   },
   {
