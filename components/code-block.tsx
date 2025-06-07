@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Copy } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { Copy } from 'lucide-react';
 
 interface CodeBlockProps {
   code: string;
@@ -20,33 +19,33 @@ export function CodeBlock({ code, language, fileName, showLineNumbers = true }: 
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const lines = code.trim().split("\n");
+  const lines = code.trim().split('\n');
 
   return (
-    <div className="group relative my-6 rounded-lg overflow-hidden">
+    <div className="group relative my-6 overflow-hidden rounded-lg">
       {fileName && (
-        <div className="absolute top-0 left-0 bg-gray-800 text-gray-300 text-xs px-3 py-1.5 font-mono rounded-br">
+        <div className="absolute left-0 top-0 rounded-br bg-gray-800 px-3 py-1.5 font-mono text-xs text-gray-300">
           {fileName}
         </div>
       )}
       <button
         onClick={copyToClipboard}
-        className="absolute top-2 right-2 p-2 rounded-md bg-gray-800/50 hover:bg-gray-700/70 text-gray-300 hover:text-white transition-colors z-10"
+        className="absolute right-2 top-2 z-10 rounded-md bg-gray-800/50 p-2 text-gray-300 transition-colors hover:bg-gray-700/70 hover:text-white"
         aria-label="Copy code to clipboard"
       >
-        {copied ? "Copied!" : <Copy className="h-4 w-4" />}
+        {copied ? 'Copied!' : <Copy className="h-4 w-4" />}
       </button>
 
       <div className="pt-8">
-        <pre className="rounded-lg bg-gray-900 p-4 overflow-x-auto text-sm text-gray-200">
+        <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-200">
           <code>
             {showLineNumbers ? (
-              <table className="border-collapse w-full">
+              <table className="w-full border-collapse">
                 <tbody>
                   {lines.map((line, i) => (
                     <tr key={i} className="hover:bg-gray-800/50">
                       {showLineNumbers && (
-                        <td className="text-right pr-4 select-none text-gray-500 text-xs w-8 py-0.5">
+                        <td className="w-8 select-none py-0.5 pr-4 text-right text-xs text-gray-500">
                           {i + 1}
                         </td>
                       )}
@@ -64,7 +63,7 @@ export function CodeBlock({ code, language, fileName, showLineNumbers = true }: 
         </pre>
       </div>
 
-      <div className="absolute top-0 right-0 bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded-bl-lg font-mono uppercase">
+      <div className="absolute right-0 top-0 rounded-bl-lg bg-gray-800 px-2 py-1 font-mono text-xs uppercase text-gray-300">
         {language}
       </div>
     </div>
