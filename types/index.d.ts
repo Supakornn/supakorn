@@ -5,7 +5,6 @@ export interface BlogPost {
   tags: string[];
   description: string;
   link: string;
-  category: string;
 }
 
 declare module '*.mdx' {

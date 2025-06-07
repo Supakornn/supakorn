@@ -3,7 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { BlogPost } from '@/types';
 import { ImageWithCredit } from '@/components/ui/image-with-credit';
@@ -72,11 +71,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
       const post = await getPostBySlug(slug);
       const { frontMatter } = post;
 
-      // Get tags and determine category
       const tags = frontMatter.tags || [];
-
-      // Use first tag as category, or "Uncategorized" if no tags
-      const category = tags.length > 0 ? tags[0] : 'General';
 
       return {
         slug: post.slug,
@@ -85,7 +80,6 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         tags: tags,
         description: frontMatter.description || '',
         link: `/writings/${post.slug}`,
-        category: category,
       } as BlogPost;
     })
   );

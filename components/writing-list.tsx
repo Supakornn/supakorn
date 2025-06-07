@@ -12,7 +12,6 @@ interface BlogPost {
   tags: string[];
   description: string;
   link: string;
-  category: string;
 }
 
 interface WritingListProps {
