@@ -2,8 +2,9 @@
 
 import { Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import gsap from 'gsap';
+import Pagination from './pagination';
 
 interface BlogPost {
   slug: string;
@@ -20,8 +21,20 @@ interface WritingListProps {
 
 export default function WritingList({ posts }: WritingListProps) {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const headerRef = useRef(null);
   const descriptionRef = useRef(null);
+
+  const POSTS_PER_PAGE = 5;
+
+  const { currentPosts, totalPages } = useMemo(() => {
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    const endIndex = startIndex + POSTS_PER_PAGE;
+    const currentPosts = posts.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+    return { currentPosts, totalPages };
+  }, [posts, currentPage]);
 
   useEffect(() => {
     if (!isFirstLoad) return;
@@ -64,6 +77,11 @@ export default function WritingList({ posts }: WritingListProps) {
     };
   }, [isFirstLoad]);
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="space-y-6">
       <section className="space-y-4">
@@ -91,8 +109,8 @@ export default function WritingList({ posts }: WritingListProps) {
 
       {/* Main content */}
       <div className="grid gap-4">
-        {posts.length > 0 ? (
-          posts.map(post => (
+        {currentPosts.length > 0 ? (
+          currentPosts.map(post => (
             <article
               key={post.title}
               className={`post-card group ${isFirstLoad ? 'post-item translate-y-4 transform opacity-0' : ''}`}
@@ -146,6 +164,13 @@ export default function WritingList({ posts }: WritingListProps) {
           </div>
         )}
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

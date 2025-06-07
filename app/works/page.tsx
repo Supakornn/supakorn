@@ -1,15 +1,28 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import { ExternalLink, Tag } from 'lucide-react';
 import Link from 'next/link';
 import { works } from './data';
+import Pagination from '@/components/pagination';
 
 export default function Works() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const headerRef = useRef(null);
   const descriptionRef = useRef(null);
+
+  const WORKS_PER_PAGE = 5;
+
+  const { currentWorks, totalPages } = useMemo(() => {
+    const startIndex = (currentPage - 1) * WORKS_PER_PAGE;
+    const endIndex = startIndex + WORKS_PER_PAGE;
+    const currentWorks = works.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(works.length / WORKS_PER_PAGE);
+
+    return { currentWorks, totalPages };
+  }, [currentPage]);
 
   useEffect(() => {
     if (!isFirstLoad) return;
@@ -52,6 +65,11 @@ export default function Works() {
     };
   }, [isFirstLoad]);
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="space-y-6">
       <section className="space-y-4">
@@ -78,8 +96,8 @@ export default function Works() {
       </section>
 
       <div className="grid gap-4">
-        {works.length > 0 ? (
-          works.map(work => (
+        {currentWorks.length > 0 ? (
+          currentWorks.map(work => (
             <article
               key={work.title}
               className={`work-card group ${isFirstLoad ? 'work-item translate-y-4 transform opacity-0' : ''}`}
@@ -128,6 +146,13 @@ export default function Works() {
           </div>
         )}
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
