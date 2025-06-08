@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote';
 import { ImageWithCredit } from './ui/image-with-credit';
 
@@ -53,11 +54,17 @@ const components = {
     />
   ),
   img: (props: any) => (
-    <img
-      className="mx-auto my-10 h-auto max-w-full rounded-lg shadow-md"
-      {...props}
-      loading="lazy"
-    />
+    <div className="relative mx-auto my-10 h-auto max-w-full">
+      <Image
+        className="rounded-lg shadow-md"
+        alt=""
+        {...props}
+        width={800}
+        height={600}
+        style={{ width: 'auto', height: 'auto' }}
+        priority={false}
+      />
+    </div>
   ),
   hr: (props: any) => <hr className="my-12 border-gray-200 dark:border-gray-800" {...props} />,
   table: (props: any) => (

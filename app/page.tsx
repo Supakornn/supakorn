@@ -34,7 +34,7 @@ export default function Home() {
         </h1>
         <p className="text-lg text-primary-foreground fade-in">
           I&apos;m a <span className="text-lg underline decoration-yellow-500">Developer</span>{' '}
-          based in Bangkok, Thailand. I interest in software developments and cybersecurity.
+          based in Bangkok, Thailand. Interested in software developments and cybersecurity.
         </p>
         <p className="text-lg text-primary-foreground fade-in">
           Now, I&apos;m a 1st year student at{' '}
@@ -43,16 +43,12 @@ export default function Home() {
           </span>
           , studying Information Technology.
         </p>
-        {/* <p className="text-lg text-primary-foreground fade-in">
-          I&apos;m have beed working as a{' '}
-          <span className="text-lg underline decoration-yellow-500">Freelance Developer</span> for 2
-          years. I work with my friends to develop web applications for clients.
-        </p> */}
         <p className="text-lg text-primary-foreground fade-in">
-          view my resume{' '}
+          View my resume{' '}
           <Link href="https://resume.supakorn.info" className="text-yellow-500 underline">
             here
           </Link>
+          .
         </p>
       </section>
 
