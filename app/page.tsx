@@ -37,7 +37,7 @@ export default function Home() {
           based in Bangkok, Thailand. Interested in software developments and cybersecurity.
         </p>
         <p className="text-lg text-primary-foreground fade-in">
-          Now, I&apos;m a 1st year student at{' '}
+          Now, I&apos;m a 2nd year student at{' '}
           <span className="text-lg underline decoration-yellow-500">
             King Mongkut&apos;s University of Technology Thonburi
           </span>
