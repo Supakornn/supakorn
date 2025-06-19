@@ -7,6 +7,6 @@ export const NAVIGATION_ITEMS = [
 
 export const SITE_CONFIG = {
     name: "Supakorn",
-    description: "My portfolio website",
+    description: "Supakorn Website",
     github: "https://github.com/supakornn"
 } as const;
