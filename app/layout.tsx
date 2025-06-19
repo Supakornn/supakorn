@@ -13,6 +13,20 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/icon.png',
   },
+
+  openGraph: {
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    type: 'website',
+    images: [
+      {
+        url: '/images/demo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Supakorn Website Preview',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
