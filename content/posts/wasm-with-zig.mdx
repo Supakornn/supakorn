@@ -1,9 +1,6 @@
 ---
-title: WebAssembly (WASM) ด้วยภาษา Zig — เขียนเว็บด้วยความเร็วระดับ Native
+title: WebAssembly (WASM) ด้วยภาษา Zig
 date: 2025-04-13
-tags: ['Thai', 'WebAssembly', 'Zig', 'Web Development']
-description: Writing about what is WebAssembly and how to use it with Zig.
-lang: th
 ---
 
 วันนี้เราจะมาลองเล่น WebAssembly (หรือที่เรียกสั้นๆว่า WASM) ด้วยภาษา Zig กัน
@@ -211,13 +208,11 @@ export fn _start() void {}
 **อธิบายโค้ด:**
 
 - ฟังก์ชัน `add` — สำหรับบวกเลขจำนวนเต็ม 2 ตัว และ return ผลลัพธ์เป็นเลขจำนวนเต็ม
-
   - `pub export` — ทำให้ฟังก์ชันสามารถเรียกใช้งานจาก JavaScript ได้
 
   - `a: i32, b: i32` — รับตัวเลขจำนวนเต็ม 2 ตัวเป็น parameter (i32 = int 32 bits)
 
 - ฟังก์ชัน `_start` — เป็นฟังก์ชันเริ่มต้นของ WebAssembly
-
   - `void` — ไม่มีการ return ค่ากลับ
   - เป็น empty function เพราะเราไม่ต้องการให้ทำอะไรตอนเริ่มต้น
 

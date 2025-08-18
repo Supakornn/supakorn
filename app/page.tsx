@@ -28,20 +28,15 @@ export default function Home() {
   return (
     <div className="space-y-16">
       <section className="space-y-6">
-        <h1 className="text-3xl font-bold fade-in">
+        <h1 className="text-2xl font-bold fade-in">
           Hello, I&apos;m <span className="text-yellow-500">[</span>Supakorn
           <span className="text-yellow-500">]</span>.
         </h1>
         <p className="text-lg text-primary-foreground fade-in">
-          I&apos;m a <span className="text-lg underline decoration-yellow-500">Developer</span>{' '}
-          based in Bangkok, Thailand. Interested in software developments and cybersecurity.
-        </p>
-        <p className="text-lg text-primary-foreground fade-in">
-          Now, I&apos;m a 2nd year student at{' '}
-          <span className="text-lg underline decoration-yellow-500">
-            King Mongkut&apos;s University of Technology Thonburi
-          </span>
-          , studying Information Technology.
+          I&apos;m a <span className="text-md underline decoration-yellow-500">Developer</span>{' '}
+          based in Bangkok, Thailand.
+          <br />
+          Interested in computer science and cybersecurity.
         </p>
         <p className="text-lg text-primary-foreground fade-in">
           View my resume{' '}
@@ -54,7 +49,7 @@ export default function Home() {
 
       <section className="space-y-6 fade-in">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Recent Writings</h2>
+          <h2 className="text-xl font-bold">Recent Writings</h2>
           <Link
             href="/writings"
             className="flex items-center gap-1 text-sm text-yellow-500 transition-colors hover:text-yellow-600"
@@ -67,37 +62,18 @@ export default function Home() {
         <div className="grid gap-4">
           {posts.slice(0, 3).map(post => (
             <Link key={post.slug} href={`/writings/${post.slug}`} className="group block fade-in">
-              <div className="transform rounded-lg border border-transparent bg-secondary/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:bg-secondary dark:hover:border-yellow-900/30">
-                <div className="flex justify-between">
-                  <div className="mb-2">
-                    <h3 className="text-lg font-medium text-primary-foreground transition-colors group-hover:text-yellow-500">
-                      {post.title}
-                    </h3>
-                  </div>
-                  <div className="flex items-center text-xs text-muted-foreground">
-                    <Calendar className="mr-1 h-3 w-3" />
+              <div className="transform rounded-lg transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center gap-5">
+                  <div className="text-sm text-muted-foreground">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
-                    })}
+                    })}{' '}
                   </div>
-                </div>
-
-                <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
-                  {post.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-0.5 text-xs font-medium text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300"
-                    >
-                      <Tag className="mr-1 h-3 w-3" />
-                      {tag}
-                    </span>
-                  ))}
+                  <h3 className="text-lg font-medium text-primary-foreground transition-colors group-hover:text-yellow-500">
+                    {post.title}
+                  </h3>
                 </div>
               </div>
             </Link>
@@ -106,15 +82,14 @@ export default function Home() {
       </section>
 
       <section className="space-y-6 fade-in">
-        <h2 className="text-2xl font-bold">Find me on</h2>
         <div className="flex gap-4 fade-in">
           <Link href="https://github.com/Supakornn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="32"
-              height="32"
+              width="28"
+              height="28"
               viewBox="0 0 24 24"
               className="fill-muted-foreground transition-colors hover:fill-yellow-500"
             >
@@ -126,8 +101,8 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="32"
-              height="32"
+              width="28"
+              height="28"
               viewBox="0 0 24 24"
               className="fill-muted-foreground transition-colors hover:fill-yellow-500"
             >
@@ -139,8 +114,8 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="32"
-              height="32"
+              width="28"
+              height="28"
               viewBox="0 0 30 30"
               className="fill-muted-foreground transition-colors hover:fill-yellow-500"
             >
@@ -155,8 +130,8 @@ export default function Home() {
             <div className="group relative h-8 w-8 opacity-60 hover:text-yellow-700 hover:opacity-100">
               <Image
                 alt="วงแหวนเว็บ"
-                width={32}
-                height={32}
+                width={28}
+                height={28}
                 src="https://webring.wonderful.software/webring.black.svg"
                 className="transition-transform duration-700 hover:rotate-360 group-hover:[filter:invert(48%)_sepia(13%)_saturate(3207%)_hue-rotate(0deg)_brightness(95%)_contrast(95%)]"
               />

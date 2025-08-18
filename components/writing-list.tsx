@@ -1,20 +1,12 @@
 'use client';
 
-import { Calendar, Tag, Filter } from 'lucide-react';
+import { Calendar, Tag, Filter, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import Pagination from './pagination';
 import { Button } from '@/components/ui/button';
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  tags: string[];
-  description: string;
-  link: string;
-}
+import { BlogPost } from '@/types';
 
 interface WritingListProps {
   posts: BlogPost[];
@@ -33,88 +25,31 @@ type Category =
 const CATEGORY_CONFIG = {
   'web-development': {
     label: 'Web Development',
-    tags: [
-      'web development',
-      'htmx',
-      'webassembly',
-      'wasm',
-      'frontend',
-      'react',
-      'vue',
-      'angular',
-      'javascript',
-      'typescript',
-      'css',
-      'html',
-    ],
+    tags: ['web'],
   },
   'mobile-development': {
     label: 'Mobile Development',
-    tags: ['mobile', 'android', 'ios', 'react native', 'flutter', 'kotlin', 'swift', 'mobile app'],
+    tags: ['mobile'],
   },
   ctf: {
     label: 'CTF',
-    tags: ['ctf', 'capture the flag', 'writeup', 'write-up'],
+    tags: ['ctf'],
   },
   cybersecurity: {
     label: 'CyberSecurity',
-    tags: [
-      'security',
-      'hacking',
-      'penetration testing',
-      'vulnerability',
-      'malware',
-      'forensics',
-      'cyber security',
-    ],
+    tags: ['security'],
   },
   'backend-development': {
     label: 'Backend Development',
-    tags: [
-      'backend',
-      'api',
-      'database',
-      'server',
-      'go',
-      'node.js',
-      'python',
-      'java',
-      'c#',
-      'php',
-      'ruby',
-      'django',
-      'express',
-    ],
+    tags: ['backend'],
   },
   'ai-ml': {
     label: 'AI/ML',
-    tags: [
-      'ai',
-      'machine learning',
-      'ml',
-      'deep learning',
-      'neural network',
-      'tensorflow',
-      'pytorch',
-      'data science',
-      'artificial intelligence',
-    ],
+    tags: ['ai'],
   },
   'low-level': {
     label: 'Low-Level',
-    tags: [
-      'low level',
-      'assembly',
-      'c',
-      'c++',
-      'rust',
-      'zig',
-      'system programming',
-      'embedded',
-      'kernel',
-      'os',
-      'operating system',
-    ],
+    tags: ['low level'],
   },
 } as const;
 
@@ -264,23 +199,11 @@ export default function WritingList({ posts }: WritingListProps) {
         >
           Writings
         </h1>
-        <p
-          ref={descriptionRef}
-          className={
-            isFirstLoad
-              ? 'translate-y-4 transform text-lg text-primary-foreground opacity-0'
-              : 'text-lg text-primary-foreground'
-          }
-        >
-          Collection of technical articles and blog posts that I&apos;ve written.
-        </p>
       </section>
 
       {/* Category Filter */}
       <div ref={filterRef} className={isFirstLoad ? 'translate-y-4 transform opacity-0' : ''}>
         <div className="flex flex-wrap items-center gap-2">
-          <Filter className="h-4 w-4 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground">Filter by:</span>
           {categories.map(category => (
             <Button
               key={category.value}
@@ -290,9 +213,6 @@ export default function WritingList({ posts }: WritingListProps) {
               className="h-8"
             >
               {category.label}
-              <span className="ml-1 rounded-full bg-muted px-1.5 py-0.5 text-xs">
-                {category.count}
-              </span>
             </Button>
           ))}
         </div>
@@ -307,37 +227,23 @@ export default function WritingList({ posts }: WritingListProps) {
               className={`post-card group ${isFirstLoad ? 'post-item translate-y-4 transform opacity-0' : ''}`}
             >
               <Link key={post.slug} href={`/writings/${post.slug}`} className="group block">
-                <div className="transform rounded-lg border border-transparent bg-secondary/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:bg-secondary dark:hover:border-yellow-900/30">
-                  <div className="flex justify-between">
-                    <div className="mb-2">
+                <div className="mb-4 transform rounded-lg transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-5">
+                      <div className="text-sm text-muted-foreground">
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}{' '}
+                      </div>
                       <h3 className="text-lg font-medium text-primary-foreground transition-colors group-hover:text-yellow-500">
                         {post.title}
                       </h3>
                     </div>
                     <div className="flex items-center text-xs text-muted-foreground">
-                      <Calendar className="mr-1 h-3 w-3" />
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
+                      <ExternalLink className="mr-1 h-4 w-4" />
                     </div>
-                  </div>
-
-                  <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
-                    {post.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center rounded-full bg-yellow-50 px-2 py-0.5 text-xs font-medium text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-300"
-                      >
-                        <Tag className="mr-1 h-3 w-3" />
-                        {tag}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </Link>
