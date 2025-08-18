@@ -1,51 +1,51 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import { ImageWithCredit } from "./ui/image-with-credit";
+import React from 'react';
+import Image from 'next/image';
+import { ImageWithCredit } from './ui/image-with-credit';
 
 const MdxComponents = {
   h1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>
+    <h1 className="mb-4 mt-8 text-3xl font-bold">{children}</h1>
   ),
   h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>
+    <h2 className="mb-3 mt-6 text-2xl font-semibold">{children}</h2>
   ),
   h3: ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-xl font-medium mt-5 mb-2">{children}</h3>
+    <h3 className="mb-2 mt-5 text-xl font-medium">{children}</h3>
   ),
   h4: ({ children }: { children: React.ReactNode }) => (
-    <h4 className="text-lg font-medium mt-4 mb-2">{children}</h4>
+    <h4 className="mb-2 mt-4 text-lg font-medium">{children}</h4>
   ),
   p: ({ children }: { children: React.ReactNode }) => (
-    <p className="text-lg mb-4 leading-relaxed">{children}</p>
+    <p className="mb-4 text-lg leading-relaxed">{children}</p>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="text-lg list-disc ml-6 mb-4">{children}</ul>
+    <ul className="mb-4 ml-6 list-disc text-lg">{children}</ul>
   ),
   ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="text-lg list-decimal ml-6 mb-4">{children}</ol>
+    <ol className="mb-4 ml-6 list-decimal text-lg">{children}</ol>
   ),
-  li: ({ children }: { children: React.ReactNode }) => <li className="text-lg mb-1">{children}</li>,
+  li: ({ children }: { children: React.ReactNode }) => <li className="mb-1 text-lg">{children}</li>,
   code: ({ children }: { children: React.ReactNode }) => (
-    <code className="bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-200 rounded p-1 text-base">
+    <code className="rounded bg-amber-100 p-1 text-base text-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
       {children}
     </code>
   ),
   pre: ({ children }: { children: React.ReactNode }) => (
-    <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4">
+    <pre className="mb-4 overflow-x-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
       {children}
     </pre>
   ),
   figure: ({ children }: { children: React.ReactNode }) => (
-    <figure className="my-6">{children}</figure>
+    <figure className="my-4">{children}</figure>
   ),
   figcaption: ({ children }: { children: React.ReactNode }) => (
-    <figcaption className="text-sm text-gray-500 dark:text-gray-400 text-center mt-2 italic">
+    <figcaption className="mt-2 text-center text-sm italic text-gray-500 dark:text-gray-400">
       {children}
     </figcaption>
   ),
-  ImageWithCredit
+  ImageWithCredit,
 };
 
 export { MdxComponents };

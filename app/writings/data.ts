@@ -1,28 +1,26 @@
 import { BlogPost } from '@/types';
 
+// tags: ['web', 'mobile', 'ctf', 'security', 'backend', 'ai', 'low level']
 export const posts: BlogPost[] = [
   {
     title: 'เขียนเว็บแบบไม่ง้อ JavaScript ด้วย HTMX',
     slug: 'htmx-basic',
     date: '2025-04-15',
-    tags: ['Thai', 'HTMX', 'Go', 'Web Development'],
-    description: 'Writing about what is HTMX and how to use it to build a web application.',
+    tags: ['web'],
     link: '/writings/htmx-basic',
   },
   {
-    title: 'WebAssembly (WASM) ด้วยภาษา Zig — เขียนเว็บด้วยความเร็วระดับ Native',
+    title: 'WebAssembly (WASM) ด้วยภาษา Zig',
     slug: 'wasm-with-zig',
     date: '2025-04-13',
-    tags: ['Thai', 'WebAssembly', 'Zig', 'Web Development'],
-    description: 'Writing about what is WebAssembly and how to use it with Zig.',
+    tags: ['web'],
     link: '/writings/wasm-with-zig',
   },
   {
     title: 'STH-Mini-Web-CTF-2025 — Write Up',
     slug: 'sth-mini-web-ctf-2025-write-up',
     date: '2025-04-06',
-    tags: ['Thai', 'CTF', 'Hacking'],
-    description: 'Write up for the STH-Mini-Web-CTF-2025.',
+    tags: ['ctf'],
     link: '/writings/sth-mini-web-ctf-2025-write-up',
   },
 ];

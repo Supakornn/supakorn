@@ -1,8 +1,6 @@
 ---
 title: 'STH-Mini-Web-CTF-2025 — Write Up'
 date: '2025-04-06'
-tags: ['Thai', 'CTF', 'Hacking']
-description: 'Write up for the STH-Mini-Web-CTF-2025.'
 ---
 
 <ImageWithCredit
@@ -332,7 +330,6 @@ print(jwt.encode({ "token": "73eb7063-f8c3-4e50-bea2-07c05681aa92"}, '"bobcats"'
 **Logic ของการทำงาน คือ:**
 
 1. **`validateNumber()`**
-
    - Regular Expression `/^[0-9]+$/m` เช็คว่า input เป็นตัวเลขหรือไม่
    - ⚠️ **ข้อสังเกต:** Regex นี้ใช้ `/m` ซึ่งจะตรวจสอบแค่บรรทัดเดียวเท่านั้น
 

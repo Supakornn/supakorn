@@ -54,7 +54,7 @@ const components = {
     />
   ),
   img: (props: any) => (
-    <div className="relative mx-auto my-10 h-auto max-w-full">
+    <div className="relative mx-auto my-6 h-auto max-w-full">
       <Image
         className="rounded-lg shadow-md"
         alt=""
@@ -66,9 +66,9 @@ const components = {
       />
     </div>
   ),
-  hr: (props: any) => <hr className="my-12 border-gray-200 dark:border-gray-800" {...props} />,
+  hr: (props: any) => <hr className="my-8 border-gray-200 dark:border-gray-800" {...props} />,
   table: (props: any) => (
-    <div className="my-8 overflow-x-auto">
+    <div className="my-6 overflow-x-auto">
       <table
         className="min-w-full divide-y divide-gray-200 rounded-lg border border-gray-200 dark:divide-gray-800 dark:border-gray-800"
         {...props}
