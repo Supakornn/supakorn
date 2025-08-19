@@ -13,7 +13,6 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  distDir: 'build',
 };
 
 module.exports = withMDX(nextConfig);
