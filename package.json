@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
-    "pages:deploy": "wrangler pages deploy .vercel/output/static"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
