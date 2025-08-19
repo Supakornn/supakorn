@@ -13,6 +13,10 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  output: 'standalone',
+  experimental: {
+    runtime: 'experimental-edge',
+  },
 };
 
 module.exports = withMDX(nextConfig);
