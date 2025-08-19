@@ -33,7 +33,7 @@ export async function getPostBySlug(slug: string) {
           [
             rehypePrettyCode,
             {
-              theme: 'tokyo-night',
+              theme: 'catppuccin-mocha',
               keepBackground: true,
               onVisitLine(node: any) {
                 if (node.children.length === 0) {

@@ -498,8 +498,8 @@ figure {
   margin: 1rem auto !important;
   border-radius: 8px !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-  background-color: #1e293b !important;
-  color: #e2e8f0 !important;
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
   padding: 1.5rem !important;
   overflow-x: auto !important;
   font-size: 0.9rem !important;
@@ -534,11 +534,11 @@ figure {
 .mdx-content pre code .token.prolog,
 .mdx-content pre code .token.doctype,
 .mdx-content pre code .token.cdata {
-  color: #8292a2 !important;
+  color: #6c7086 !important;
 }
 
 .mdx-content pre code .token.punctuation {
-  color: #e2e8f0 !important;
+  color: #cdd6f4 !important;
 }
 
 .mdx-content pre code .token.property,
@@ -547,7 +547,7 @@ figure {
 .mdx-content pre code .token.number,
 .mdx-content pre code .token.constant,
 .mdx-content pre code .token.symbol {
-  color: #f59e0b !important;
+  color: #fab387 !important;
 }
 
 .mdx-content pre code .token.selector,
@@ -555,7 +555,7 @@ figure {
 .mdx-content pre code .token.string,
 .mdx-content pre code .token.char,
 .mdx-content pre code .token.builtin {
-  color: #10b981 !important;
+  color: #a6e3a1 !important;
 }
 
 .mdx-content pre code .token.operator,
@@ -563,16 +563,16 @@ figure {
 .mdx-content pre code .token.url,
 .mdx-content pre code .language-css .token.string,
 .mdx-content pre code .style .token.string {
-  color: #ef4444 !important;
+  color: #f38ba8 !important;
 }
 
 .mdx-content pre code .token.atrule,
 .mdx-content pre code .token.attr-value,
 .mdx-content pre code .token.keyword {
-  color: #3b82f6 !important;
+  color: #cba6f7 !important;
 }
 
 .mdx-content pre code .token.function,
 .mdx-content pre code .token.class-name {
-  color: #f472b6 !important;
+  color: #89b4fa !important;
 }

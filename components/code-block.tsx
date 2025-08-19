@@ -24,28 +24,54 @@ export function CodeBlock({ code, language, fileName, showLineNumbers = true }: 
   return (
     <div className="group relative my-6 overflow-hidden rounded-lg">
       {fileName && (
-        <div className="absolute left-0 top-0 rounded-br bg-gray-800 px-3 py-1.5 font-mono text-xs text-gray-300">
+        <div
+          className="absolute left-0 top-0 rounded-br px-3 py-1.5 font-mono text-xs"
+          style={{ backgroundColor: '#313244', color: '#a6adc8' }}
+        >
           {fileName}
         </div>
       )}
       <button
         onClick={copyToClipboard}
-        className="absolute right-2 top-2 z-10 rounded-md bg-gray-800/50 p-2 text-gray-300 transition-colors hover:bg-gray-700/70 hover:text-white"
+        className="absolute right-2 top-2 z-10 rounded-md p-2 transition-colors"
+        style={{ backgroundColor: 'rgba(49, 50, 68, 0.5)', color: '#a6adc8' }}
+        onMouseEnter={e => {
+          e.currentTarget.style.backgroundColor = 'rgba(49, 50, 68, 0.8)';
+          e.currentTarget.style.color = '#cdd6f4';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.backgroundColor = 'rgba(49, 50, 68, 0.5)';
+          e.currentTarget.style.color = '#a6adc8';
+        }}
         aria-label="Copy code to clipboard"
       >
         {copied ? 'Copied!' : <Copy className="h-4 w-4" />}
       </button>
 
       <div className="pt-8">
-        <pre className="overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-200">
+        <pre
+          className="overflow-x-auto rounded-lg p-4 text-sm"
+          style={{ backgroundColor: '#1e1e2e', color: '#cdd6f4' }}
+        >
           <code>
             {showLineNumbers ? (
               <table className="w-full border-collapse">
                 <tbody>
                   {lines.map((line, i) => (
-                    <tr key={i} className="hover:bg-gray-800/50">
+                    <tr
+                      key={i}
+                      className="hover:bg-opacity-50"
+                      style={{ '--tw-bg-opacity': '0.5' } as React.CSSProperties}
+                      onMouseEnter={e =>
+                        (e.currentTarget.style.backgroundColor = 'rgba(88, 91, 112, 0.3)')
+                      }
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    >
                       {showLineNumbers && (
-                        <td className="w-8 select-none py-0.5 pr-4 text-right text-xs text-gray-500">
+                        <td
+                          className="w-8 select-none py-0.5 pr-4 text-right text-xs"
+                          style={{ color: '#6c7086' }}
+                        >
                           {i + 1}
                         </td>
                       )}
@@ -63,7 +89,10 @@ export function CodeBlock({ code, language, fileName, showLineNumbers = true }: 
         </pre>
       </div>
 
-      <div className="absolute right-0 top-0 rounded-bl-lg bg-gray-800 px-2 py-1 font-mono text-xs uppercase text-gray-300">
+      <div
+        className="absolute right-0 top-0 rounded-bl-lg px-2 py-1 font-mono text-xs uppercase"
+        style={{ backgroundColor: '#313244', color: '#a6adc8' }}
+      >
         {language}
       </div>
     </div>
