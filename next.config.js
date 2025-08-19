@@ -13,15 +13,7 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  reactStrictMode: true,
-  swcMinify: true,
-  output: 'export',
-  experimental: {
-    appDir: true,
-  },
-  images: {
-    unoptimized: true,
-  },
+  distDir: 'build',
 };
 
 module.exports = withMDX(nextConfig);
