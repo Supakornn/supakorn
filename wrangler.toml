@@ -1,0 +1,5 @@
+name = "supakorn"
+compatibility_date = "2025-08-19"
+
+[site]
+bucket = ".vercel/output/static"
