@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
