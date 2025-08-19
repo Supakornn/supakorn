@@ -71,7 +71,7 @@ export default function Home() {
                       day: 'numeric',
                     })}{' '}
                   </div>
-                  <h3 className="text-lg font-medium text-primary-foreground transition-colors group-hover:text-yellow-500">
+                  <h3 className="text-lg text-primary-foreground transition-colors group-hover:text-yellow-500">
                     {post.title}
                   </h3>
                 </div>

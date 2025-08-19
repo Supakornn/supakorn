@@ -95,7 +95,7 @@ export default function Works() {
               <Link key={work.title} href={`${work.link}`} className="group block">
                 <div className="transform rounded-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex justify-between">
-                    <h3 className="text-lg font-medium text-primary-foreground transition-colors group-hover:text-yellow-500">
+                    <h3 className="text-lg text-primary-foreground transition-colors group-hover:text-yellow-500">
                       {work.title}
                     </h3>
                     <div className="flex items-center text-xs text-muted-foreground">

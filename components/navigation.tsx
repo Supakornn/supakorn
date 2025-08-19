@@ -41,7 +41,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-sm">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
         <Link href="/" className="text-lg font-medium transition-colors hover:text-yellow-500">
           {SITE_CONFIG.name}
@@ -70,7 +70,7 @@ export function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full bg-background/80 backdrop-blur-sm md:hidden">
+          <div className="absolute left-0 right-0 top-full border-b border-border/40 bg-background md:hidden">
             <div className="space-y-4 px-6 py-4">
               {NAVIGATION_ITEMS.map(item => (
                 <NavLink key={item.href} href={item.href} isMobile onClick={() => setIsOpen(false)}>

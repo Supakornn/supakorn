@@ -17,7 +17,7 @@ export const posts: BlogPost[] = [
     link: '/writings/wasm-with-zig',
   },
   {
-    title: 'STH-Mini-Web-CTF-2025 — Write Up',
+    title: ' STH-Mini-Web-CTF-2025 — Write Up',
     slug: 'sth-mini-web-ctf-2025-write-up',
     date: '2025-04-06',
     tags: ['ctf'],
