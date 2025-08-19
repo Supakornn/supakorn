@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:deploy": "wrangler pages deploy"
+    "pages:deploy": "wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
