@@ -33,10 +33,7 @@ export default function Home() {
           <span className="text-yellow-500">]</span>.
         </h1>
         <p className="text-lg text-primary-foreground fade-in">
-          I&apos;m a <span className="text-md underline decoration-yellow-500">Developer</span>{' '}
-          based in Bangkok, Thailand.
-          <br />
-          Interested in computer science and cybersecurity.
+          I&apos;m a Indie Developer who love to create stuff.
         </p>
         <p className="text-lg text-primary-foreground fade-in">
           View my resume{' '}
